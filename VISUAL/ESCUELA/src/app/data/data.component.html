@@ -1,0 +1,420 @@
+<nz-layout style="height: 100%;">
+  <nz-header style="background: #a9d18e;height: 110px;">
+    <div nz-row  nzType="flex" nzJustify="end" >
+      <div nz-col nzSpan="12">
+        <div nz-col nzSpan="4" nzTitle="Page Title">
+          <img src="../../../assets/img/logo.png"
+           style="width: 80px;height: 100px;padding:10px">
+        </div>
+          <div nz-col nzSpan="12" >
+            <h4  class="title-logo" >ESCUELA DE INTELIGENCIA DEL EJERCITO</h4>
+          </div>
+      </div>
+      <div nz-col nzSpan="8" ></div>
+      <div nz-col nzSpan="4" >
+          <div class="form-spaccing">
+              <nz-avatar
+                nzSize="large"
+                nzText="Melanie"
+                style="vertical-align: middle;background: #f56a00"
+              ></nz-avatar>
+              <button nz-button [nzType]="'dashed'"  (click)="logout()"
+              style="margin-left: 16px; vertical-align: middle;">
+                <span>Cerrar Sesión</span>
+              </button>
+          </div>
+      </div>         
+  </div>
+  
+  </nz-header>
+  <nz-content style="background: #385723;height: 75%;">
+      <nz-card style="margin-left: 5%;width:90%;margin-top:4%">
+          <div nz-row  nzType="flex" nzJustify="end" style="padding-bottom: 10px">
+              <div nz-col nzSpan="24">
+                <nz-tabset>
+                  <nz-tab nzTitle="Datos Personales">
+                      <div nz-row>
+                          <div nz-col nzSpan="8" nzOffset="2">
+                              <input nz-input placeholder="Apellido paterno" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Apellido materno" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Nombres" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Alias" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Estado civil" [(ngModel)]="value" />
+                          </div>
+                          <div nz-col nzSpan="8" nzOffset="4">
+                              <input nz-input placeholder="Nacionalidad" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="DPTA/Estado" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Provincia" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Distrito/Ciudad" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Fecha de nacimiento" [(ngModel)]="value" />
+                              <br/>
+                              <br />
+                              <button nz-button  class="buttom-login">Registrar</button>
+                          </div>
+                          </div>
+                       
+                  </nz-tab>
+                  <nz-tab nzTitle="Datos Informáticos">
+                      <div nz-row>
+                          <div nz-col nzSpan="8" nzOffset="2">
+                              <input nz-input placeholder="Correo Electronico" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Página WEb" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Facebook" [(ngModel)]="value" />
+                              
+                          </div>
+                          <div nz-col nzSpan="8" nzOffset="4">
+                              <input nz-input placeholder="Twiter" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Celular" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Télefono" [(ngModel)]="value" />
+                              <br/>
+                              <br />
+                              <button nz-button  class="buttom-login">Registrar</button>
+                              
+                          </div>
+                          </div>
+                  </nz-tab>
+                  <nz-tab nzTitle="Caracteristicas Particulares">
+                      <div nz-col nzSpan="8" nzOffset="2">
+                          <input nz-input placeholder="Sexo" [(ngModel)]="value" />
+                          <br />
+                          <br />
+                          <input nz-input placeholder="Talla" [(ngModel)]="value" />
+                          <br />
+                          <br />
+                          <input nz-input placeholder="Peso" [(ngModel)]="value" />
+                          <br />
+                          <br />
+                          <input nz-input placeholder="Color de tez" [(ngModel)]="value" />
+                          <br />
+                          <br />
+                          <input nz-input placeholder="Tipo de cara" [(ngModel)]="value" />
+                          <br />
+                          <br />
+                          <input nz-input placeholder="Color de ojos" [(ngModel)]="value" />
+                      </div>
+                      <div nz-col nzSpan="8" nzOffset="4">
+                          <input nz-input placeholder="Tipo de pelo" [(ngModel)]="value" />
+                          <br />
+                          <br />
+                          <input nz-input placeholder="Tipo de nariz" [(ngModel)]="value" />
+                          <br />
+                          <br />
+                          <input nz-input placeholder="Grupo sanguineo" [(ngModel)]="value" />
+                          <br />
+                          <br />
+                          <input nz-input placeholder="Posib.Usar barba" [(ngModel)]="value" />
+                          <br />
+                          <br />
+                          <input nz-input placeholder="Señales particulares" [(ngModel)]="value" />
+                          <br/>
+                          <br />
+                          <button nz-button  class="buttom-login">Registrar</button>
+                      </div>
+                      
+                   
+                  </nz-tab>
+                  <nz-tab nzTitle="Domicilio">
+                      <div nz-row  nzType="flex" >
+                          <div nz-col nzSpan="24">
+                            <nz-table #basicTable [nzData]="listOfData">
+                              <thead>
+                                <tr>
+                                  <th>DPTO</th>
+                                  <th>PROV</th>
+                                  <th>DIST</th>
+                                  <th>URB</th>
+                                  <th>DIRECCIÓN(calle,N°,MZ,LTE)</th>
+                                  <th>CROQUIS</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let data of basicTable.data">
+                                  <td>{{ data.dpto }}</td>
+                                  <td>{{ data.prov }}</td>
+                                  <td>{{ data.dist }}</td>
+                                  <td>{{ data.urb }}</td>
+                                  <td>{{ data.direc }}</td>
+                                  <td>
+                                    <nz-upload nzAction="https://jsonplaceholder.typicode.com/posts/">
+                                    <button nz-button><i nz-icon nzType="upload"></i><span>Click to Upload</span></button>
+                                  </nz-upload>
+                                </td>
+                                  <td>
+                                    <button nz-button nzType="dafault" nzShape="circle" 
+                                    style="background: green;margin-right: 5px">
+                                      <i nz-icon nzType="eye" nzTheme="outline" style="color:antiquewhite"></i>
+                                    </button>
+                                    <button nz-button nzType="primary" nzShape="circle">
+                                        <i nz-icon nzType="form" nzTheme="outline"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </nz-table> 
+                          </div>
+                      </div>
+                  </nz-tab>
+                  <nz-tab nzTitle="Documentos Personales">
+                      <div nz-col nzSpan="8" nzOffset="2">
+                      <input nz-input placeholder="Inscripción" [(ngModel)]="value" />
+                      <br />
+                      <br />
+                      <input nz-input placeholder="Libreta militar" [(ngModel)]="value" />
+                      <br />
+                      <br />
+                      <input nz-input placeholder="DNI" [(ngModel)]="value" />
+                      
+                  </div>
+                  <div nz-col nzSpan="8" nzOffset="4">
+                      <input nz-input placeholder="CIP" [(ngModel)]="value" />
+                      <br />
+                      <br />
+                      <input nz-input placeholder="Brevete" [(ngModel)]="value" />
+                      <br />
+                      <br />
+                      <input nz-input placeholder="Pasaporte" [(ngModel)]="value" />
+                      <br/>
+                      <br />
+                      <button nz-button  class="buttom-login">Registrar</button>
+                     
+                  </div>
+                  
+                  </nz-tab>
+                  <nz-tab nzTitle="Educación">
+                      <div nz-row  nzType="flex" >
+                          <div nz-col nzSpan="24">
+                            <nz-table #basicTable [nzData]="listOfData">
+                              <thead>
+                                <tr>
+                                  <th>Colegio o Universidad</th>
+                                  <th>Lugar</th>
+                                  <th>Nivel</th>
+                                  <th>Título Obtenido</th>
+                                 
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let data of basicTable.data">
+                                  <td>{{ data.colegio }}</td>
+                                  <td>{{ data.lugar }}</td>
+                                  <td>{{ data.nivel }}</td>
+                                  <td>{{ data.titulo }}</td>
+                                  <td>
+                                    <button nz-button nzType="dafault" nzShape="circle" 
+                                    style="background: green;margin-right: 5px">
+                                      <i nz-icon nzType="eye" nzTheme="outline" style="color:antiquewhite"></i>
+                                    </button>
+                                    <button nz-button nzType="primary" nzShape="circle">
+                                        <i nz-icon nzType="form" nzTheme="outline"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </nz-table> 
+                          </div>
+                      </div>
+                  </nz-tab>
+                  <nz-tab nzTitle="Viajes">
+                    <div nz-row  nzType="flex" >
+                        <div nz-col nzSpan="24">
+                          <nz-table #basicTable [nzData]="listOfData">
+                            <thead>
+                              <tr>
+                                <th>Año</th>
+                                <th>País</th>
+                                <th>Motivo</th>
+                               
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let data of basicTable.data">
+                                <td>{{ data.fecha }}</td>
+                                <td>{{ data.pais }}</td>
+                                <td>{{ data.motivo }}</td>
+                                <td>
+                                  <button nz-button nzType="dafault" nzShape="circle" 
+                                  style="background: green;margin-right: 5px">
+                                    <i nz-icon nzType="eye" nzTheme="outline" style="color:antiquewhite"></i>
+                                  </button>
+                                  <button nz-button nzType="primary" nzShape="circle">
+                                      <i nz-icon nzType="form" nzTheme="outline"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </nz-table> 
+                        </div>
+                    </div>
+                   
+                </nz-tab>
+                <nz-tab nzTitle="Empleos">
+                    <div nz-row  nzType="flex" >
+                        <div nz-col nzSpan="24">
+                          <nz-table #basicTable [nzData]="listOfData">
+                            <thead>
+                              <tr>
+                                <th>Fecha</th>
+                                <th>Tipo</th>
+                                <th>Entidad</th>
+                                <th>Dirección</th>
+                                <th>Ingresos</th>
+                               
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let data of basicTable.data">
+                                <td>{{ data.fecha }}</td>
+                                <td>{{ data.tipo }}</td>
+                                <td>{{ data.entidad }}</td>
+                                <td>{{ data.direc }}</td>
+                                <td>{{ data.ingresos }}</td>
+                                <td>
+                                  <button nz-button nzType="dafault" nzShape="circle" 
+                                  style="background: green;margin-right: 5px">
+                                    <i nz-icon nzType="eye" nzTheme="outline" style="color:antiquewhite"></i>
+                                  </button>
+                                  <button nz-button nzType="primary" nzShape="circle">
+                                      <i nz-icon nzType="form" nzTheme="outline"></i>
+                                  </button>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </nz-table> 
+                        </div>
+                    </div>
+                  </nz-tab>
+                  <nz-tab nzTitle="Anteced.Policiales">
+                      <div nz-row>
+                          <div nz-col nzSpan="8" >
+                              <p>Ha sido detenido por la PNP?</p>
+                              <br />
+                              <p>Ha sido enjuiciado Y/O encarcelado?</p>
+                              <br />
+                              <p>Ha sido hospitalizado?</p>
+                              <br />
+                              <p>Ha prestado SMV?</p>
+                              <br />
+                              <p>Pertenece o simpatiza con alguna agrupación política?</p>
+                          </div>
+                          
+                          <div nz-col nzSpan="4">
+                              <nz-checkbox-group [(ngModel)]="checkOptionsOne" (ngModelChange)="log(checkOptionsOne)"></nz-checkbox-group>
+                              <br />
+                              <br />
+                              <br />
+                              <nz-checkbox-group [(ngModel)]="checkOptionsTwo" (ngModelChange)="log(checkOptionsTwo)"></nz-checkbox-group>
+                              <br />
+                              <br />
+                             
+                              <nz-checkbox-group [(ngModel)]="checkOptionsThree" (ngModelChange)="log(checkOptionsThree)"></nz-checkbox-group>
+                              <br />
+                              <br />
+                              <br />
+                              <nz-checkbox-group [(ngModel)]="checkOptionsFour" (ngModelChange)="log(checkOptionsFour)"></nz-checkbox-group>
+                              <br />
+                              <br />
+                              <br />
+                              <nz-checkbox-group [(ngModel)]="checkOptionsFive" (ngModelChange)="log(checkOptionsFive)"></nz-checkbox-group>
+                             
+                          </div>
+                          <div nz-col nzSpan="4">
+                              <p>Comisaria:</p>
+                              <br />
+                              <p>Juzgado/Penal:</p>
+                              <br />
+                              <p>Clínica/Hospital:</p>
+                              <br />
+                              <p>UU/Dependencia:</p>
+                          </div>
+                          
+                          <div nz-col nzSpan="6">
+                              <input nz-input placeholder="Comisaria" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Juzgado/penal" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="Clínica/hospital" [(ngModel)]="value" />
+                              <br />
+                              <br />
+                              <input nz-input placeholder="uu/dependencia" [(ngModel)]="value" />
+                              <br/>
+                              <br />
+                              <br/>
+                              <br />
+                              <button nz-button  class="buttom-login">Registrar</button>
+                          </div>
+                        </div>
+                  </nz-tab>
+                  <nz-tab nzTitle="Datos Familiares">
+                      <div nz-row  nzType="flex" >
+                          <div nz-col nzSpan="24">
+                            <nz-table #basicTable [nzData]="listOfData">
+                              <thead>
+                                <tr>
+                                  <th>Nombre y Apellido</th>
+                                  <th>Telefono</th>
+                                  <th>Celular</th>
+                                  <th>Edad</th>
+                                  <th>Ocupación</th>
+                                  <th>Domicilio</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr *ngFor="let data of basicTable.data">
+                                  <td>{{ data.name }}</td>
+                                  <td>{{ data.telefono }}</td>
+                                  <td>{{ data.telefono }}</td>
+                                  <td>{{ data.age }}</td>
+                                  <td>{{ data.titulo }}</td>
+                                  <td>{{ data.direc}}</td>
+                                  <td>
+                                    <button nz-button nzType="dafault" nzShape="circle" 
+                                    style="background: green;margin-right: 5px">
+                                      <i nz-icon nzType="eye" nzTheme="outline" style="color:antiquewhite"></i>
+                                    </button>
+                                    <button nz-button nzType="primary" nzShape="circle">
+                                        <i nz-icon nzType="form" nzTheme="outline"></i>
+                                    </button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </nz-table> 
+                          </div>
+                      </div>
+                  </nz-tab>
+                </nz-tabset>
+      </div>
+      </div>
+
+        </nz-card>
+        <ng-template #extraTemplate>
+          <a>More</a>
+        </ng-template>
+  </nz-content>
+  <nz-footer style="background: #385723;"></nz-footer>
+</nz-layout>

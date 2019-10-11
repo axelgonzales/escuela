@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.escuela.repository.StudentRepository">
+
+    <resultMap id="studentMap" type="pe.escuela.domain.Student">
+        <id column="student_id" property="id"/>
+        <result column="student_name" property="name"/>
+        <result column="student_firstLastname" property="firstLastname"/>
+        <result column="student_secondLastname" property="secondLastname"/>
+        
+        <result column="student_alias" property="alias"/>
+        <result column="student_stateCivil" property="stateCivil"/>
+        <result column="student_nationality" property="nationality"/>
+        <result column="student_deparment" property="deparment"/>
+        <result column="student_province" property="province"/>
+        <result column="student_distrity" property="distrity"/>
+        <result column="student_dateBirth" property="dateBirth"/>
+        <result column="student_correo" property="correo"/>
+        <result column="student_paginaWeb" property="paginaWeb"/>
+        
+        <result column="student_facebook" property="facebook"/>
+        <result column="student_twiter" property="twiter"/>
+        <result column="student_celular" property="celular"/>
+        <result column="student_telefono" property="telefono"/>
+        <result column="student_sexo" property="sexo"/>
+        
+        <result column="student_talla" property="talla"/>
+        <result column="student_peso" property="peso"/>
+        <result column="student_colorTez" property="colorTez"/>
+        <result column="student_tipoCara" property="tipoCara"/>
+        <result column="student_colorOjos" property="colorOjos"/>
+        
+        <result column="student_tipoPelo" property="tipoPelo"/>
+        <result column="student_tipoNariz" property="tipoNariz"/>
+        <result column="student_grupoSanguineo" property="grupoSanguineo"/>
+        <result column="student_posiUserBarba" property="posiUserBarba"/>
+        <result column="student_senalesParticualres" property="senalesParticualres"/>
+        
+        <result column="student_inscripcion" property="inscripcion"/>
+        <result column="student_libretaMilitar" property="libretaMilitar"/>
+        <result column="student_dni" property="dni"/>
+        <result column="student_cip" property="cip"/>
+        <result column="student_brevete" property="brevete"/>
+        
+        <result column="student_pasaporte" property="pasaporte"/>
+        <result column="student_pnp" property="pnp"/>
+        <result column="student_enjuiciado" property="enjuiciado"/>
+        <result column="student_hospitalizado" property="hospitalizado"/>
+        <result column="student_smv" property="smv"/>
+        
+        <result column="student_agrupacionPolitica" property="agrupacionPolitica"/>
+        <result column="student_comisaria" property="comisaria"/>
+        <result column="student_juzgado" property="juzgado"/>
+        <result column="student_hospital" property="hospital"/>
+        <result column="student_dependencia" property="dependencia"/>
+        
+    </resultMap>
+    
+
+    <select id="findAll" resultMap="studentMap"  statementType="CALLABLE">
+        CALL student__find_all()
+    </select>
+    
+    <select id="findId" resultMap="studentMap" 
+ 	 parameterType="integer"
+ 	 statementType="CALLABLE">
+        CALL student__find_id(#{id})
+    </select>
+
+ 	<select id="insert" resultType="integer"  
+ 	 parameterType="pe.escuela.domain.Student"
+ 	 statementType="CALLABLE">
+        CALL student__insert(#{firstLastname},#{secondLastname},#{name},#{alias},
+        #{stateCivil},#{nationality},#{deparment},#{province},
+        #{distrity},#{dateBirth},#{correo},#{paginaWeb},
+        #{facebook},#{twiter},#{celular},#{telefono},
+        #{sexo},#{talla},#{peso},#{colorTez},
+        #{tipoCara},#{colorOjos},#{tipoPelo},#{tipoNariz},
+        #{grupoSanguineo},#{posiUserBarba},#{senalesParticualres},#{inscripcion},
+        #{libretaMilitar},#{dni},#{cip},#{brevete},
+        #{pasaporte},#{pnp},#{enjuiciado},#{hospitalizado},
+        #{smv},#{agrupacionPolitica},#{comisaria},#{juzgado},#{hospital},#{dependencia})
+    </select>
+    
+    <select id="update" resultType="integer"  
+ 	 parameterType="pe.escuela.domain.Student"
+ 	 statementType="CALLABLE">
+        CALL student__update(#{id},#{name},#{quanty},#{type},#{priece})
+    </select>
+    
+	<select id="delete"  
+ 	 parameterType="integer"
+ 	 statementType="CALLABLE">
+        CALL student__delete(#{id})
+    </select>
+    
+	
+   
+</mapper>

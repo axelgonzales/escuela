@@ -1,0 +1,42 @@
+.titulo{
+    margin-top:30px;
+    font-size: 43px;
+}
+.titulo-register{
+  margin-top:12px;
+  font-size: 27px;
+}
+.login-form {
+  max-width: 300px;
+}
+
+.login-form-forgot {
+  float: right;
+}
+
+.login-form-button {
+  width: 100%;
+}
+  .title-logo{
+    line-height: 10pt;
+    padding-top: 30px;
+  }
+  .user{
+      padding-right: 10px;
+  }
+  .cont{
+    padding-right: 10px;
+  }
+  .form-spaccing{
+      width: 100%;
+      padding: 5px;
+  }
+  .buttom-login{
+      background: #70ad47;
+      width: 100%;
+      font-size: 15px;
+  }
+  .buttom-login:hover{
+      color:#eeeeee;
+      border-color: #eeeeee;
+  } 

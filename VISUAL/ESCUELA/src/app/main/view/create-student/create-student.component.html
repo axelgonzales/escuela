@@ -1,0 +1,695 @@
+
+  <div nz-row  nzType="flex" nzJustify="end" style="padding-bottom: 10px">
+  <div nz-col nzSpan="22">
+  <nz-steps [nzCurrent]="current" >
+      <nz-step nzTitle="Datos Personales"></nz-step>
+      <nz-step nzTitle="Datos Informáticos"></nz-step>
+      <nz-step nzTitle="Caracteristicas Particulares"></nz-step>
+      <nz-step nzTitle="Documentos Personales"></nz-step>
+      <nz-step nzTitle="Educación"></nz-step>
+      <nz-step nzTitle="Viajes"></nz-step>
+      <nz-step nzTitle="Empleos"></nz-step>
+      <nz-step nzTitle="Anteced.Policiales"></nz-step>
+      <nz-step nzTitle="Datos Familiares"></nz-step>
+    </nz-steps>
+
+    <div class="steps-content">
+      <form nz-form [formGroup]="personalInformationForm" (ngSubmit)="submitForm()">
+      <div [hidden]="!(current==0)">
+          <div nz-row>
+            <div nz-col nzSpan="10" nzOffset="2">
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">Apellido paterno</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                  <input nz-input  name="apePat" formControlName="firstLastname" required />
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">Apellido materno</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                  <input nz-input  name="apeMat" formControlName="secondLastname" required />
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">Nombres</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                  <input nz-input  name="required" formControlName="name" required />
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">Alias</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                  <input nz-input  name="required" formControlName="alias" required />
+                </nz-form-control>
+              </nz-form-item> 
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">Estado civil</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                  <nz-select  name="stateCivil" required formControlName="stateCivil"  nzPlaceHolder="Seleccione">
+                    <nz-option *ngFor="let p of stateCivilList" [nzValue]="p.value" [nzLabel]="p.name"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+            <div nz-col nzSpan="10" nzOffset="1">
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">Nacionalidad</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                  <nz-select  name="nationality" required formControlName="nationality"  nzPlaceHolder="Seleccione" >
+                    <nz-option *ngFor="let p of nationalityList" [nzValue]="p" [nzLabel]="p"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">Departamento</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                  <nz-select  name="deparment" required formControlName="deparment"  nzPlaceHolder="Seleccione"
+                  (ngModelChange)="deparmentChange($event)">
+                    <nz-option *ngFor="let p of deparmentList" [nzValue]="p.departamento" [nzLabel]="p.nombre"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">Provincia</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                  <nz-select  name="province" required formControlName="province"   nzPlaceHolder="Seleccione"
+                  (ngModelChange)="provinceChange($event)">
+                    <nz-option *ngFor="let p of provinceList" [nzValue]="p.provincia" [nzLabel]="p.nombre"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">Distrito</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                  <nz-select  name="distrity" required formControlName="distrity" nzPlaceHolder="Seleccione" >
+                    <nz-option *ngFor="let p of distrityList" [nzValue]="p.distrito" [nzLabel]="p.nombre"></nz-option>
+                  </nz-select>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-label [nzSpan]="8">Fecha de nacimiento</nz-form-label>
+                <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                  <nz-date-picker name="date-picker-success" formControlName="dateBirth"></nz-date-picker>
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        
+      </div>
+      <div [hidden]="!(current==1)">
+          <div nz-row>
+              <div nz-col nzSpan="10" nzOffset="2">
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="8">Correo Electronico</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                    <input nz-input  name="correo" formControlName="correo" placeholder="Correo Electronico" required />
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="8">Página Web</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                    <input nz-input  name="paginaWeb" formControlName="paginaWeb" placeholder="Página Web" required />
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="8">Facebook</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                    <input nz-input  name="facebook" formControlName="facebook" placeholder="Facebook" required />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzSpan="10" nzOffset="2">
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="8">Twiter</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                    <input nz-input  name="twiter" formControlName="twiter" placeholder="Twiter" required />
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="8">Celular</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                    <input nz-input  name="celular" formControlName="celular" placeholder="Celular" required />
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="8">Télefono</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+                    <input nz-input  name="telefono" formControlName="telefono" placeholder="Télefono" required />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+      </div>
+      <div [hidden]="!(current==2)">
+        <div nz-col nzSpan="10" nzOffset="2">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Sexo</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="sexo" formControlName="sexo" placeholder="Sexo" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Talla</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="talla" formControlName="talla" placeholder="Talla" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Peso</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="peso" formControlName="peso" placeholder="Peso" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Color de tez</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="colorTez" formControlName="colorTez" placeholder="Color de tez" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Tipo de cara</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="tipoCara" formControlName="tipoCara" placeholder="Tipo de cara" required />
+            </nz-form-control>
+          </nz-form-item>
+          
+        </div>
+        <div nz-col nzSpan="10" nzOffset="2">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Color de ojos</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="colorOjos" formControlName="colorOjos" placeholder="Color de ojos" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Tipo de pelo</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="tipoPelo" formControlName="tipoPelo" placeholder="Tipo de pelo" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Tipo de nariz</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="tipoNariz" formControlName="tipoNariz" placeholder="Tipo de nariz" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Grupo sanguineo</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="grupoSanguineo" formControlName="grupoSanguineo" placeholder="Grupo sanguineo" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Posib.Usar barba</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="posiUserBarba" formControlName="posiUserBarba" placeholder="Posib.Usar barba" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Señales particulares</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="senalesParticualres" formControlName="senalesParticualres" placeholder="Señales particulares" required />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div [hidden]="!(current==3)">     
+        <div nz-col nzSpan="10" nzOffset="2">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Inscripción</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="inscripcion" formControlName="inscripcion" placeholder="Inscripción" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Libreta militar</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="libretaMilitar" formControlName="libretaMilitar" placeholder="Libreta militar" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">DNI</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="dni" formControlName="dni" placeholder="DNI" required />
+            </nz-form-control>
+          </nz-form-item>
+        </div>             
+      
+        <div nz-col nzSpan="10" nzOffset="2">
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">CIP</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="cip" formControlName="cip" placeholder="CIP" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Brevete</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="brevete" formControlName="brevete" placeholder="Brevete" required />
+            </nz-form-control>
+          </nz-form-item>
+          <nz-form-item>
+            <nz-form-label [nzSpan]="8">Pasaporte</nz-form-label>
+            <nz-form-control nzHasFeedback [nzSpan]="12" nzErrorTip="Input is required">
+              <input nz-input  name="pasaporte" formControlName="pasaporte" placeholder="Pasaporte" required />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+      </div>
+      <div [hidden]="!(current==4)">
+        <div nz-row  nzType="flex" nzJustify="start">
+            <div nz-col nzSpan="25" style="align-content: initial;padding-bottom: 27px;">
+              <form nz-form [formGroup]="educaForm" nzLayout="inline"  (ngSubmit)="submitFormEduca()"  >
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-input-group nzPrefixIcon="bank">
+                      <input nz-input   type="text" formControlName="colegio" nz-input placeholder="Colegio o Universida"  required/>
+                    </nz-input-group>
+                    <nz-form-explain *ngIf="educaForm.get('colegio')?.dirty && educaForm.get('colegio')?.errors">
+                      Campo obligatorio
+                    </nz-form-explain>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control >
+                    <nz-input-group nzPrefixIcon="compass">
+                      <input nz-input   type="text" formControlName="lugar" nz-input  placeholder="lugar" required />
+                    </nz-input-group>
+                    <nz-form-explain *ngIf="educaForm.get('lugar')?.dirty && educaForm.get('lugar')?.errors">
+                      Campo obligatorio
+                    </nz-form-explain>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control >
+                    <nz-input-group nzPrefixIcon="control">
+                      <input nz-input   type="text" formControlName="nivel" nz-input  placeholder="nivel" required />
+                    </nz-input-group>
+                    <nz-form-explain *ngIf="educaForm.get('nivel')?.dirty && educaForm.get('nivel')?.errors">
+                      Campo obligatorio
+                    </nz-form-explain>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control >
+                    <nz-input-group nzPrefixIcon="container">
+                      <input nz-input   type="text" formControlName="titulo" nz-input  placeholder="Titulo obtenido" required />
+                    </nz-input-group>
+                    <nz-form-explain *ngIf="educaForm.get('titulo')?.dirty && educaForm.get('titulo')?.errors">
+                      Campo obligatorio
+                    </nz-form-explain>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-control>
+                      <button  nz-button   [nzType]="'primary'"  >Agregar</button>
+                  </nz-form-control>
+                </nz-form-item>
+              </form>
+            </div>
+            <div nz-col nzSpan="22">
+              <div class="ant-table ant-table-default">
+                <div class="ant-table-content">
+                  <div class="ant-table-body">
+                    <table >
+                      <thead class="ant-table-thead">
+                        <tr>
+                          <th>Colegio o Universidad</th>
+                          <th>Lugar</th>
+                          <th>Nivel</th>
+                          <th>Título Obtenido</th>
+                          
+                        </tr>
+                      </thead>
+                      <tbody _ngcontent-jhi-c1 class="ant-table-tbody">
+                        <tr *ngFor="let data of listOfDataEduca" class="ant-table-row ng-star-inserted-td" _ngcontent-pcx-c1>
+                          <td _ngcontent-pcx-c1 class="ng-star-inserted-td">{{ data.colegio }}</td>
+                          <td>{{ data.lugar }}</td>
+                          <td>{{ data.nivel }}</td>
+                          <td>{{ data.titulo }}</td>
+                          
+                        </tr>
+                      </tbody>
+                    </table> 
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <div [hidden]="!(current==5)">
+        <div nz-row  nzType="flex" >
+          <div nz-col nzSpan="25" style="align-content: initial;padding-bottom: 27px;">
+            <form nz-form [formGroup]="viajeForm" nzLayout="inline"  (ngSubmit)="submitViajeForm()"  >
+              <nz-form-item>
+                <nz-form-control>
+                  <nz-input-group nzPrefixIcon="time">
+                    <input nz-input   type="text" formControlName="fecha" nz-input placeholder="Año"  required/>
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="viajeForm.get('fecha')?.dirty && viajeForm.get('fecha')?.errors">
+                    Campo obligatorio
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control >
+                  <nz-input-group nzPrefixIcon="compass">
+                    <input nz-input   type="text" formControlName="pais" nz-input  placeholder="Pais" required />
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="viajeForm.get('pais')?.dirty && viajeForm.get('pais')?.errors">
+                    Campo obligatorio
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control >
+                  <nz-input-group nzPrefixIcon="control">
+                    <input nz-input   type="text" formControlName="motivo" nz-input  placeholder="motivo" required />
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="viajeForm.get('motivo')?.dirty && viajeForm.get('motivo')?.errors">
+                    Campo obligatorio
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control>
+                    <button  nz-button   [nzType]="'primary'"  >Agregar</button>
+                </nz-form-control>
+              </nz-form-item>
+            </form>
+          </div>
+          <div nz-col nzSpan="22">
+              <div class="ant-table ant-table-default">
+                  <div class="ant-table-content">
+                    <div class="ant-table-body">
+                      <table >
+                        <thead class="ant-table-thead">
+                          <tr>
+                            <th>Año</th>
+                            <th>País</th>
+                            <th>Motivo</th>
+                          
+                          </tr>
+                        </thead>
+                        <tbody class="ant-table-tbody">
+                          <tr *ngFor="let data of listOfDataViaje" class="ant-table-row ng-star-inserted-td">
+                            <td _ngcontent-pcx-c1 class="ng-star-inserted-td">{{ data.fecha }}</td>
+                            <td>{{ data.pais }}</td>
+                            <td>{{ data.motivo }}</td>
+                          </tr>
+                        </tbody>
+                      </table> 
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+      <div [hidden]="!(current==6)">
+          <div nz-col style="align-content: initial;padding-bottom: 27px;">
+            <form nz-form [formGroup]="empleoForm" nzLayout="inline"  (ngSubmit)="submitEmpleoForm()"  >
+              <nz-form-item>
+                <nz-form-control>
+                  <nz-input-group nzPrefixIcon="history">
+                    <input nz-input   type="text" formControlName="fecha" nz-input placeholder="fecha"  required/>
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="empleoForm.get('fecha')?.dirty && empleoForm.get('fecha')?.errors">
+                    Campo obligatorio
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control >
+                  <nz-input-group nzPrefixIcon="tool">
+                    <input nz-input   type="text" formControlName="tipo" nz-input  placeholder="Tipo" required />
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="empleoForm.get('tipo')?.dirty && empleoForm.get('tipo')?.errors">
+                    Campo obligatorio
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control >
+                  <nz-input-group nzPrefixIcon="shop">
+                    <input nz-input   type="text" formControlName="entidad" nz-input  placeholder="Entidad" required />
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="empleoForm.get('')?.dirty && empleoForm.get('entidad')?.errors">
+                    Campo obligatorio
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control >
+                  <nz-input-group nzPrefixIcon="compass">
+                    <input nz-input   type="text" formControlName="direc" nz-input  placeholder="Dirección" required />
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="empleoForm.get('direc')?.dirty && empleoForm.get('direc')?.errors">
+                    Campo obligatorio
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control >
+                  <nz-input-group nzPrefixIcon="euro">
+                    <input nz-input   type="text" formControlName="ingresos" nz-input  placeholder="Ingresos" required />
+                  </nz-input-group>
+                  <nz-form-explain *ngIf="empleoForm.get('ingresos')?.dirty && empleoForm.get('ingresos')?.errors">
+                    Campo obligatorio
+                  </nz-form-explain>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control>
+                    <button  nz-button   [nzType]="'primary'"  >Agregar</button>
+                </nz-form-control>
+              </nz-form-item>
+            </form>
+          </div>
+          <div nz-row  nzType="flex" >
+              <div nz-col nzSpan="22">
+                  <div class="ant-table ant-table-default">
+                      <div class="ant-table-content">
+                        <div class="ant-table-body">
+                          <table >
+                            <thead class="ant-table-thead">
+                              <tr>
+                                <th>Fecha</th>
+                                <th>Tipo</th>
+                                <th>Entidad</th>
+                                <th>Dirección</th>
+                                <th>Ingresos</th>
+                                
+                              </tr>
+                            </thead>
+                            <tbody class="ant-table-tbody">
+                              <tr *ngFor="let data of listOfDataEmpleo" class="ant-table-row ng-star-inserted-td">
+                                <td class="ng-star-inserted-td">{{ data.fecha }}</td>
+                                <td>{{ data.tipo }}</td>
+                                <td>{{ data.entidad }}</td>
+                                <td>{{ data.direc }}</td>
+                                <td>{{ data.ingresos }}</td>
+                              </tr>
+                            </tbody>
+                          </table> 
+                        </div>
+                      </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+      <div [hidden]="!(current==7)" style="text-align: initial;">
+          <div nz-row>
+              <div nz-col nzSpan="12" >
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="12">¿Ha sido detenido por la PNP?</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="8" nzErrorTip="Input is required">
+                    <nz-radio-group formControlName="pnp" style="width: 200px;margin-left: 50px;;">
+                      <label nz-radio nzValue="1">SI</label>
+                      <label nz-radio nzValue="0">NO</label>
+                    </nz-radio-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="12">¿Ha sido enjuiciado Y/O encarcelado?</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="8" nzErrorTip="Input is required">
+                    <nz-radio-group formControlName="enjuiciado" style="width: 200px;margin-left: 50px;;">
+                      <label nz-radio nzValue="1">SI</label>
+                      <label nz-radio nzValue="0">NO</label>
+                    </nz-radio-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="12">¿Ha sido hospitalizado?</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="8" nzErrorTip="Input is required">
+                    <nz-radio-group formControlName="hospitalizado" style="width: 200px;margin-left: 50px;;">
+                      <label nz-radio nzValue="1">SI</label>
+                      <label nz-radio nzValue="0">NO</label>
+                    </nz-radio-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="12">¿Ha prestado SMV?</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="8" nzErrorTip="Input is required">
+                    <nz-radio-group formControlName="smv" style="width: 200px;margin-left: 50px;;">
+                      <label nz-radio nzValue="1">SI</label>
+                      <label nz-radio nzValue="0">NO</label>
+                    </nz-radio-group>
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                  <nz-form-label [nzSpan]="12">¿Pertenece o simpatiza con alguna agrupación política?</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="8" nzErrorTip="Input is required">
+                    <nz-radio-group formControlName="agrupacionPolitica" style="width: 200px;margin-left: 50px;;">
+                      <label nz-radio nzValue="1">SI</label>
+                      <label nz-radio nzValue="0">NO</label>
+                    </nz-radio-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+              <div nz-col nzSpan="8">
+                <nz-form-item *ngIf="personalInformationForm.get('pnp').value==1">
+                  <nz-form-label [nzSpan]="12">Comisaria</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="8" nzErrorTip="Input is required">
+                    <input nz-input formControlName="comisaria"  name="comisaria"  placeholder="Comisaria"  />
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item *ngIf="personalInformationForm.get('enjuiciado').value==1">
+                  <nz-form-label [nzSpan]="12">Juzgado/Penal</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="8" nzErrorTip="Input is required">
+                    <input nz-input   formControlName="juzgado" name="juzgado"  placeholder="juzgado"  />
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item *ngIf="personalInformationForm.get('hospitalizado').value==1">
+                  <nz-form-label [nzSpan]="12">Clínica/Hospital</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="8" nzErrorTip="Input is required">
+                      <input nz-input   formControlName="hospital" name="hospital"  placeholder="hospital"  />
+                  </nz-form-control>
+                </nz-form-item>
+                <nz-form-item *ngIf="personalInformationForm.get('smv').value==1">
+                  <nz-form-label [nzSpan]="12">UU/Dependencia</nz-form-label>
+                  <nz-form-control nzHasFeedback [nzSpan]="8" nzErrorTip="Input is required">
+                    <input nz-input formControlName="dependencia" name="dependencia"  placeholder="dependencia"  />
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+      </div>
+      <div [hidden]="!(current==8)">
+          <div nz-row  nzType="flex" >
+              <div nz-col style="align-content: initial;padding-bottom: 27px;">
+                <form nz-form [formGroup]="datoFamiliarForm" nzLayout="inline"  (ngSubmit)="submitDataFamiliaForm()"  >
+                  <nz-form-item>
+                    <nz-form-control>
+                      <nz-input-group nzPrefixIcon="user">
+                        <input nz-input   type="text" formControlName="nombre" nz-input placeholder="Nombre y Apellido"  required/>
+                      </nz-input-group>
+                      <nz-form-explain *ngIf="datoFamiliarForm.get('nombre')?.dirty && datoFamiliarForm.get('nombre')?.errors">
+                        Campo obligatorio
+                      </nz-form-explain>
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                    <nz-form-control >
+                      <nz-input-group nzPrefixIcon="table">
+                        <input nz-input   type="text" formControlName="telefono" nz-input  placeholder="Telefono" required />
+                      </nz-input-group>
+                      <nz-form-explain *ngIf="datoFamiliarForm.get('telefono')?.dirty && datoFamiliarForm.get('telefono')?.errors">
+                        Campo obligatorio
+                      </nz-form-explain>
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                    <nz-form-control >
+                      <nz-input-group nzPrefixIcon="shake">
+                        <input nz-input   type="text" formControlName="celular" nz-input  placeholder="Celular" required />
+                      </nz-input-group>
+                      <nz-form-explain *ngIf="datoFamiliarForm.get('celular')?.dirty && datoFamiliarForm.get('celular')?.errors">
+                        Campo obligatorio
+                      </nz-form-explain>
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                    <nz-form-control >
+                      <nz-input-group nzPrefixIcon="heart">
+                        <input nz-input   type="text" formControlName="parentesco" nz-input  placeholder="Parentesco" required />
+                      </nz-input-group>
+                      <nz-form-explain *ngIf="datoFamiliarForm.get('parentesco')?.dirty && datoFamiliarForm.get('parentesco')?.errors">
+                        Campo obligatorio
+                      </nz-form-explain>
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                    <nz-form-control >
+                      <nz-input-group nzPrefixIcon="contacts">
+                        <input nz-input   type="text" formControlName="ocupacion" nz-input  placeholder="Ocupación" required />
+                      </nz-input-group>
+                      <nz-form-explain *ngIf="datoFamiliarForm.get('ocupacion')?.dirty && datoFamiliarForm.get('ocupacion')?.errors">
+                        Campo obligatorio
+                      </nz-form-explain>
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                    <nz-form-control >
+                      <nz-input-group nzPrefixIcon="compass">
+                        <input nz-input   type="text" formControlName="domicilio" nz-input  placeholder="Domicilio" required />
+                      </nz-input-group>
+                      <nz-form-explain *ngIf="datoFamiliarForm.get('domicilio')?.dirty && datoFamiliarForm.get('domicilio')?.errors">
+                        Campo obligatorio
+                      </nz-form-explain>
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                    <nz-form-control>
+                        <button  nz-button   [nzType]="'primary'"  >Agregar</button>
+                    </nz-form-control>
+                  </nz-form-item>
+                </form>
+              </div>
+              <div nz-col nzSpan="22">
+                  <div class="ant-table ant-table-default">
+                      <div class="ant-table-content">
+                        <div class="ant-table-body">
+                          <table >
+                            <thead class="ant-table-thead">
+                              <tr>
+                                <th>Nombre y Apellido</th>
+                                <th>Telefono</th>
+                                <th>Celular</th>
+                                <th>Parentesco</th>
+                                <th>Ocupación</th>
+                                <th>Domicilio</th>
+                              </tr>
+                            </thead>
+                            <tbody class="ant-table-tbody">
+                              <tr *ngFor="let data of listOfDataFamilia" class="ant-table-row ng-star-inserted-td">
+                                <td class="ng-star-inserted-td">{{ data.nombre }}</td>
+                                <td>{{ data.telefono }}</td>
+                                <td>{{ data.celular }}</td>
+                                <td>{{ data.parentesco }}</td>
+                                <td>{{ data.ocupacion }}</td>
+                                <td>{{ data.domicilio}}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+    </form>
+    </div>
+    <div class="steps-action" style="align-content: flex-end;">
+      <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+        <span>Anterior</span>
+      </button>
+      <button nz-button nzType="primary"  (click)="next()" *ngIf="current < 8">
+        <span>Siguiente</span>
+      </button>
+      <button nz-button nzType="primary" (click)="done()" *ngIf="current === 8 && value">
+        <span>Registrar</span>
+      </button>
+    </div>
+  </div>
+</div>
+       

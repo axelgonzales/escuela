@@ -1,0 +1,30 @@
+logging:
+  level:
+    root: INFO
+    org.springframework: ERROR
+    pe.realplaza.unsubscribed: TRACE
+    org.springframework.jdbc.core.JdbcTemplate: TRACE
+    org.springframework.jdbc.core.simple.SimpleJdbcCall: TRACE
+    org.springframework.web.client.RestTemplate: DEBUG
+
+server:
+  port: 8080
+  servlet:
+    context-path: /escuela 
+    
+spring:
+  jackson:
+    time-zone: America/Lima
+    date-format: yyyy-MM-dd HH:mm:ss
+    locale: es_PE
+  datasource:
+    platform: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/escuela?useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: password
+    
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+
+

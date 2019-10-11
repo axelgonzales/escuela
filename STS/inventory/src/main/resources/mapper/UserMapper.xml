@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="pe.escuela.repository.UserRepository">
+
+    <resultMap id="userMap" type="pe.escuela.domain.User">
+        <id column="user_id" property="id"/>
+        <result column="user_name" property="name"/>
+        <result column="user_username" property="username"/>
+        <result column="user_password" property="password"/>
+    </resultMap>
+    
+
+    <select id="login" resultMap="userMap"  statementType="CALLABLE"
+    parameterType="pe.escuela.domain.User">
+        CALL user__login(#{username},#{password})
+    </select>
+
+ 	<select id="insert" resultType="integer"  
+ 	 parameterType="pe.escuela.domain.User"
+ 	 statementType="CALLABLE">
+        CALL user__insert(#{name},#{username},#{password})
+    </select>
+ 
+</mapper>
