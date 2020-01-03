@@ -1,0 +1,122 @@
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+/*sidebar*/
+#sidebar {
+    background: #fff;
+    color: #fff;
+    transition: all 0.3s;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 100vh;
+}
+#sidebar.active {
+    margin-left: -250px;
+}
+.sb-header{
+  /*height: 120px;*/
+  width: 100%;
+  padding: 15px;
+  /*background: linear-gradient( rgba(81, 43, 97, 0.73), rgba(81, 43, 97, 0.73) ), url("assets/images/bg-header.jpg") no-repeat right center;
+  */
+}
+.sb-header_avatar{
+  height: 40px;
+  background-color: #fff;
+  border-radius: 100%;
+  width: 40px;
+  vertical-align: middle;
+}
+.sb-header-title{
+  margin-top: 5px;
+  color: #fff;
+}
+.sb-header-subtitle{
+  font-size: 13px;
+  color: #fff;
+}
+.sb-header_btn_menu{
+  margin-top: -30px;
+}
+.cs-hand{
+  cursor: pointer;
+}
+.icons-sidebar{
+  font-size: 18px;
+  vertical-align: middle;
+  margin-right: 7px;
+}
+a[data-toggle="collapse"] {
+    position: relative;
+}
+a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+    content: '+';
+    display: block;
+    position: absolute;
+    right: 20px;
+    font-size: 16px;
+}
+a[aria-expanded="true"]::before {
+    content: '-';
+}
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+a, a:hover, a:focus {
+    text-decoration: none;
+    transition: all 0.3s;
+}
+#sidebar ul.components {
+    padding: 20px 0;
+    font-size: 14px;
+}
+#sidebar ul p {
+    color: #000;
+    padding: 10px;
+}
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 14px;
+    display: block;
+    color: #333;
+    padding-top: 0px;
+    padding-bottom: 12px;
+    padding: .5rem 1rem;
+}
+#sidebar ul li span {
+  margin-right: 15px;
+  font-size: 22px;
+  vertical-align: text-bottom;
+}
+#sidebar ul li a:hover {
+    color: #000;
+}
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #000;
+}
+ul ul a {
+    font-size: 14px !important;
+    padding-left: 30px !important;
+}
+#content{
+  /*webkit-box-flex: 0;*/
+  -ms-flex: auto;
+  flex: 0;
+  flex-grow: 9;
+  min-height: 600px;
+  margin-top: 0;
+}
+.visible{
+    display: none;
+  }
+@media screen and (max-width: 592px) {
+  .visible{
+    display: block;
+  }
+}

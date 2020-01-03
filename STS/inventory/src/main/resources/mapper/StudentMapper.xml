@@ -3,7 +3,7 @@
 <mapper namespace="pe.escuela.repository.StudentRepository">
 
     <resultMap id="studentMap" type="pe.escuela.domain.Student">
-        <id column="student_id" property="id"/>
+        <id column="student_id" property="studentId"/>
         <result column="student_name" property="name"/>
         <result column="student_firstLastname" property="firstLastname"/>
         <result column="student_secondLastname" property="secondLastname"/>
@@ -53,9 +53,42 @@
         <result column="student_juzgado" property="juzgado"/>
         <result column="student_hospital" property="hospital"/>
         <result column="student_dependencia" property="dependencia"/>
-        
+        <collection property="families" resultMap="familyMap"/>
+        <collection property="travels" resultMap="travelMap"/>
+        <collection property="employees" resultMap="employeeMap"/>
+        <collection property="educations" resultMap="educationMap"/>
     </resultMap>
     
+    <resultMap id="familyMap" type="pe.escuela.domain.Family">
+        <id property="studentId" column="student_family_id"/>
+        <result property="nombre" column="student_family_nombre"/>
+        <result property="telefono" column="student_family_telefono"/>
+        <result property="celular" column="student_family_celular"/>
+        <result property="parentesco" column="student_family_parentesco"/>
+        <result property="ocupacion" column="student_family_ocupacion"/>
+        <result property="domicilio" column="student_family_domicilio"/>
+    </resultMap>
+    
+    <resultMap id="travelMap" type="pe.escuela.domain.Travel">
+        <result property="fecha" column="student_travel_fecha"/>
+        <result property="pais" column="student_travel_pais"/>
+        <result property="motivo" column="student_travel_motivo"/>
+    </resultMap>
+    
+    <resultMap id="employeeMap" type="pe.escuela.domain.Employee">
+        <result property="fecha" column="student_employee_fecha"/>
+        <result property="tipo" column="student_employee_tipo"/>
+        <result property="entidad" column="student_employee_entidad"/>
+        <result property="direc" column="student_employee_direc"/>
+        <result property="ingresos" column="student_employee_ingresos"/>
+    </resultMap>
+    
+    <resultMap id="educationMap" type="pe.escuela.domain.Education">
+        <result property="colegio" column="student_education_colegio"/>
+        <result property="lugar" column="student_education_lugar"/>
+        <result property="nivel" column="student_education_nivel"/>
+        <result property="titulo" column="student_education_titulo"/>
+    </resultMap>
 
     <select id="findAll" resultMap="studentMap"  statementType="CALLABLE">
         CALL student__find_all()
@@ -64,13 +97,13 @@
     <select id="findId" resultMap="studentMap" 
  	 parameterType="integer"
  	 statementType="CALLABLE">
-        CALL student__find_id(#{id})
+        CALL student__find_id(#{studentId})
     </select>
 
  	<select id="insert" resultType="integer"  
  	 parameterType="pe.escuela.domain.Student"
  	 statementType="CALLABLE">
-        CALL student__insert(#{firstLastname},#{secondLastname},#{name},#{alias},
+        CALL student__insert(#{studentId},#{firstLastname},#{secondLastname},#{name},#{alias},
         #{stateCivil},#{nationality},#{deparment},#{province},
         #{distrity},#{dateBirth},#{correo},#{paginaWeb},
         #{facebook},#{twiter},#{celular},#{telefono},
@@ -82,16 +115,40 @@
         #{smv},#{agrupacionPolitica},#{comisaria},#{juzgado},#{hospital},#{dependencia})
     </select>
     
+    <select id="insertFamily" resultType="integer"  
+ 	 parameterType="pe.escuela.domain.Family"
+ 	 statementType="CALLABLE">
+ 	 	CALL student_family__insert(#{studentId},#{celular},#{domicilio},#{nombre},#{ocupacion},#{parentesco},#{telefono})
+ 	 </select>
+ 	 
+ 	 <select id="insertTravel" resultType="integer"  
+ 	 parameterType="pe.escuela.domain.Travel"
+ 	 statementType="CALLABLE">
+ 	 	CALL student_travel__insert(#{studentId},#{fecha},#{pais},#{motivo})
+ 	 </select>
+ 	 
+ 	 <select id="insertEmployee" resultType="integer"  
+ 	 parameterType="pe.escuela.domain.Employee"
+ 	 statementType="CALLABLE">
+ 	 	CALL student_employee__insert(#{studentId},#{fecha},#{tipo},#{entidad},#{direc},#{ingresos})
+ 	 </select>
+ 	 
+ 	 <select id="insertEducation" resultType="integer"  
+ 	 parameterType="pe.escuela.domain.Education"
+ 	 statementType="CALLABLE">
+ 	 	CALL student_education__insert(#{studentId},#{colegio},#{lugar},#{nivel},#{titulo})
+ 	 </select>
+    
     <select id="update" resultType="integer"  
  	 parameterType="pe.escuela.domain.Student"
  	 statementType="CALLABLE">
-        CALL student__update(#{id},#{name},#{quanty},#{type},#{priece})
+        CALL student__update(#{student_id},#{name},#{quanty},#{type},#{priece})
     </select>
     
 	<select id="delete"  
  	 parameterType="integer"
  	 statementType="CALLABLE">
-        CALL student__delete(#{id})
+        CALL student__delete(#{student_id})
     </select>
     
 	

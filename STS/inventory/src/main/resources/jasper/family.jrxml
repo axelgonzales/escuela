@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="education" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" uuid="6d4dd50e-892f-4970-ba56-73740e101d6d">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="p_student_id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select 
+sf.id_student_family				as student_family_id,
+        sf.nombre					as student_family_nombre,
+        sf.telefono					as student_family_telefono,
+        sf.celular					as student_family_celular,
+        sf.parentesco					as student_family_parentesco,
+        sf.ocupacion					as student_family_ocupacion,
+        sf.domicilio				as student_family_domicilio
+from 
+student_family sf
+where sf.student_id =  $P{p_student_id}]]>
+	</queryString>
+	<field name="student_family_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="student_family_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_family"/>
+	</field>
+	<field name="student_family_nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="student_family_nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_family"/>
+	</field>
+	<field name="student_family_telefono" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="student_family_telefono"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_family"/>
+	</field>
+	<field name="student_family_celular" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="student_family_celular"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_family"/>
+	</field>
+	<field name="student_family_parentesco" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="student_family_parentesco"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_family"/>
+	</field>
+	<field name="student_family_ocupacion" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="student_family_ocupacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_family"/>
+	</field>
+	<field name="student_family_domicilio" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="student_family_domicilio"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_family"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="120" height="16" uuid="af670862-a733-49b6-91f4-bd85805ca65f"/>
+				<box topPadding="1" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre y Apellido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="0" width="60" height="16" uuid="b25ca3c7-6f5b-4c1a-8ebf-a3eb1c00e26a"/>
+				<box topPadding="1" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="70" height="16" uuid="365bec03-8530-4878-be42-8606b3bee2f3"/>
+				<box topPadding="1" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Celular]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="90" height="16" uuid="617552bd-eb8a-4c28-8cbc-be83940c0b68"/>
+				<box topPadding="1" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Parentesco]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="360" y="0" width="90" height="16" uuid="c725601e-75a0-4d51-9915-abc90b3dbf83"/>
+				<box topPadding="1" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ocupación]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="450" y="0" width="90" height="16" uuid="38c27114-b513-46a1-bab7-436fa63cb26e"/>
+				<box topPadding="1" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Domicilio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="0" width="120" height="42" uuid="225b6523-79b3-47aa-b437-0ec9e01132a2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="57d83094-ec72-4e34-bdad-43e581b12423"/>
+				</reportElement>
+				<box leftPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{student_family_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="0" width="60" height="42" uuid="e9b8f0aa-3e7b-4d5a-bf82-b2aa31888b9f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e00f989b-3544-405d-984c-905f5d11ec15"/>
+				</reportElement>
+				<box leftPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{student_family_telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="200" y="0" width="70" height="42" uuid="e0f64004-168b-41ab-b96b-12d792fb9006">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="7181a75f-6701-4fd0-a810-f4c982cc936f"/>
+				</reportElement>
+				<box leftPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{student_family_celular}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="90" height="42" uuid="32b84123-6c5b-4c51-9d73-e396a99f24b1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="08467789-6475-45ed-a466-6df169bfa750"/>
+				</reportElement>
+				<box leftPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{student_family_parentesco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="0" width="90" height="42" uuid="5269533a-4d19-4ca7-8460-d7f882b1d2aa">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="08467789-6475-45ed-a466-6df169bfa750"/>
+				</reportElement>
+				<box leftPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{student_family_ocupacion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="450" y="0" width="90" height="42" uuid="b0192cf9-4788-4dbb-96ca-e90f0a9620bd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="08467789-6475-45ed-a466-6df169bfa750"/>
+				</reportElement>
+				<box leftPadding="2">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{student_family_domicilio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

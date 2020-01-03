@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="education" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" whenResourceMissingType="Empty" uuid="6d4dd50e-892f-4970-ba56-73740e101d6d">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="p_student_id" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select 
+st.fecha					as  student_travel_fecha,
+        st.pais					as  student_travel_pais,
+        st.motivo					as  student_travel_motivo
+from 
+student_travel st
+where st.student_id =  $P{p_student_id}]]>
+	</queryString>
+	<field name="student_travel_fecha" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="student_travel_fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_travel"/>
+	</field>
+	<field name="student_travel_pais" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="student_travel_pais"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_travel"/>
+	</field>
+	<field name="student_travel_motivo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="student_travel_motivo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student_travel"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="0" width="100" height="16" uuid="af670862-a733-49b6-91f4-bd85805ca65f"/>
+				<box topPadding="1" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Año]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="150" height="16" uuid="b25ca3c7-6f5b-4c1a-8ebf-a3eb1c00e26a"/>
+				<box topPadding="1" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[País]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="230" height="16" uuid="365bec03-8530-4878-be42-8606b3bee2f3"/>
+				<box topPadding="1" leftPadding="4" bottomPadding="1" rightPadding="1">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Motivo]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="20" y="0" width="100" height="20" uuid="6c2e717b-a086-4ba9-8165-d000c4c6c56c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c0ad91e5-45fb-41f7-b668-74a4e4dc3744"/>
+				</reportElement>
+				<box leftPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{student_travel_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="150" height="20" uuid="ec55f397-49cd-4778-b5e5-8531edab3955">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f39fdcea-ea7e-4ea3-99f6-9416304dba07"/>
+				</reportElement>
+				<box leftPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{student_travel_pais}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="230" height="20" uuid="09748de9-59fa-4457-91ca-b6db040efc39">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="74e9d0e5-4988-4180-bdcd-447d19da7a95"/>
+				</reportElement>
+				<box leftPadding="3">
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textFieldExpression><![CDATA[$F{student_travel_motivo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

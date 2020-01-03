@@ -9,6 +9,7 @@ export const environment = {
     url_user_insert : 'http://localhost:8080/escuela/user',
     url_student_insert : 'http://localhost:8080/escuela/student',
     url_student_find_all : 'http://localhost:8080/escuela/student',
+    url_student_report : 'http://localhost:8080/escuela/student/{id}/report',
     token_url_menu : 'TI4kPiQyT313oG8knnPXd6mzx29FQmBCa01gaATr',
     code_system : 25
   }

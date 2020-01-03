@@ -1,0 +1,53 @@
+<div class="layout-default">
+  <app-header (toggle)="toggleSideBar()" (logout)="logout()"></app-header>
+  <div class="wrapper">
+    <nav id="sidebar" [ngClass]="{'active': showStyle}">
+      <div class="sb-header bg-orange-rp">
+        <!-- <img src="assets/images/male-11.jpg" class="sb-header_avatar"> -->
+        <div class="sb-header-title" style="float: left;margin-right: 1.1rem;color: black;">
+            <i class="material-icons" style="font-size: 3rem;">
+              account_circle
+            </i>
+        </div>
+        <div class="sb-header-title" style="color: black;">
+           <!-- {{data_user.user_names | titlecase}} {{data_user.user_lastname | titlecase}} {{data_user.user_mother_lastname | titlecase}} 
+           -->
+           Usuario Administrador
+        </div>
+
+      </div>
+      <ul class="list-unstyled components">
+        <li *ngFor="let item of menu; let i = index">
+           <a *ngIf="!item.child" [routerLink]="[item.route]">
+             <span class="gg-icon material-icons">{{item.icon}}</span>
+             {{item.label}}
+           </a>
+           <a *ngIf="item.child" [attr.href]="'#a' + i"  data-toggle="collapse" aria-expanded="false"><span class="gg-icon material-icons">{{item.icon}}</span>{{item.label}}</a>
+           <ul *ngIf="item.child" class="collapse list-unstyled"  [id]="'a'+ i">
+              <li *ngIf="item.child.label; else arraycontent">
+                <a [routerLink]="[item.child.route]"> {{item.child.label | titlecase}} </a>
+              </li>
+              <ng-template #arraycontent>
+                <li *ngFor="let subitem of item.child" >
+                  <a [routerLink]="[subitem.route]"> {{subitem.label | titlecase}} </a>
+                </li>
+               
+              </ng-template>
+              
+            </ul>
+            <div style="align-content: center;">
+              <img  src="assets/img/logo.png">
+            </div>
+            
+        </li>
+        <li class="visible">
+          <a (click)="logout()" class="dropdown-item link-button"> <span class="gg-icon material-icons icons-header">power_settings_new</span>Cerrar Sesion </a>
+        </li>
+      </ul>
+    </nav>
+    <div id="content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

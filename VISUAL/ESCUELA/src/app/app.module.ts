@@ -15,9 +15,15 @@ import * as AllIcons from '@ant-design/icons-angular/icons';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DataComponent } from './data/data.component';
 import {TabModule} from 'angular-tabs-component';
+import { FormLoginComponent } from './auth/login/form-login/form-login.component';
+import { MaterialModule } from './material.module';
+import { PrincipalComponent } from './main/view/principal/principal.component';
 import { CreateStudentComponent } from './main/view/create-student/create-student.component';
+import { HeaderComponent } from './main/commons/header/header.component';
+import { SearchStudentComponent } from './main/view/main/search-student/search-student.component';
+import { PdfViewerComponent } from 'ng2-pdf-viewer'; 
+import { ModalModule } from 'ngx-bootstrap/modal';
 registerLocaleData(es);
 
 const antDesignIcons = AllIcons as {
@@ -28,10 +34,15 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
 @NgModule({
   declarations: [
     AppComponent,
+
+    PdfViewerComponent,
     LoginComponent,
+    FormLoginComponent,
     MainComponent,
-    DataComponent,
-    CreateStudentComponent
+    PrincipalComponent,
+    CreateStudentComponent,
+    HeaderComponent,
+    SearchStudentComponent
   ],
   imports: [
     BrowserModule,
@@ -43,8 +54,13 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(key => antDesign
     NgZorroAntdModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
+    ModalModule.forRoot(),
+     
   ],
+  entryComponents: [CreateStudentComponent],
+  // exports: [SearchStudentComponent ],
   providers: [{ provide: NZ_I18N, useValue: es_ES }],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,118 @@
-/* You can add global styles to this file, and also import other style files */
-.ant-steps-item-title{
-    font-size: 12px;
-  }
-  ::ng-deep .ant-modal-content{
-    width: 100%;
-  }
+/* @import '~@angular/material/prebuilt-themes/deeppurple-amber.css'; */
+
+:root{
+  --shadow_1: 1px 1px 4px rgba(0,0,0,0.1), 1px 3px 4px rgba(0,0,0,0.1);
+  --bg-black-opc: rgba(0, 0, 0, 0.1) !important;
+  --white:#FFF;
+  --black:#000;
+  --color-dark-gray:#444;
+  --color-gray:#E2E2E2;
+  --color-purple-rp : #a9d18e ; /*#5000D9;*/
+  --color-blue-rp :   #006DC2 ; /*#D99100;*/
+  --color-green-rp  : #8DBB00; /*#73FF00;*/
+  --color-pink-rp   : #E21B82; /*#FC14FC;*/
+  --color-skye-rp   : rgb(1,84,160);
+}
+
+body{
+  background-color: #f3f3f3 !important;
+  overflow-x: hidden;
+  /* // font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol"; */
+   font-family: 'Ubuntu', sans-serif !important;
+}
+
+.color-black{color:var(--black);}
+.color-white{color:var(--white);}
+.color-purple-rp{color:var(--color-purple-rp);}
+.color-blue-rp{color:var(--color-blue-rp);}
+.color-green-rp{color:var(--color-green-rp);}
+.color-pink-rp{color:var(--color-pink-rp);}
+.color-skye-rp{color:var(--color-skye-rp);}
+
+.text-opc_1{color: rgba(255,255,255,0.1) !important;}
+.text-opc_2{color: rgba(255,255,255,0.2) !important;}
+.text-opc_3{color: rgba(255,255,255,0.3) !important;}
+.text-opc_4{color: rgba(255,255,255,0.4) !important;}
+.text-opc_5{color: rgba(255,255,255,0.5) !important;}
+.text-opc_6{color: rgba(255,255,255,0.6) !important;}
+.text-opc_7{color: rgba(255,255,255,0.7) !important;}
+.text-opc_8{color: rgba(255,255,255,0.8) !important;}
+.text-opc_9{color: rgba(255,255,255,0.9) !important;}
+
+.bg-opc{background-color: var(--bg-black-opc) !important;}
+.bg-gray{background-color: var(--color-gray) !important;}
+.bg-purple-rp{background-color: var(--color-purple-rp) !important;}
+.bg-blue-rp{background-color: var(--color-blue-rp) !important;}
+.bg-green-rp{background-color: var(--color-green-rp) !important;}
+.bg-pink-rp{background-color: var(--color-pink-rp) !important;}
+.bg-skye-rp{background-color: var(--color-skye-rp) !important;}
+
+.font-10{ font-size: 10px !important;}
+.font-11{ font-size: 11px !important;}
+.font-12{ font-size: 12px !important;}
+.font-13{ font-size: 13px !important;}
+.font-14{ font-size: 14px !important;}
+.font-15{ font-size: 15px !important;}
+.font-18{ font-size: 18px !important;}
+.font-20{ font-size: 20px !important;}
+.font-25{ font-size: 25px !important;}
+
+.border-gray {border-color: var(--color-dark-gray);}
+
+.cdk-overlay-pane {
+  transform: none !important;
+}
+.cdk-overlay-pane>.ng-trigger {
+  min-width: 100% !important;
+}
+.loading{
+  justify-content: center;
+}
+.alert-rp{
+  display: inline-flex;
+  width: 100%;
+  font-size: 13px;
+}
+.alert-rp>i{
+  padding-right: 5px;
+  font-size: 20px;
+}
+.link-button{
+  cursor: pointer;
+}
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-left: 45%;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  border-top-color: #333;
+  animation: spinner .6s linear infinite;
+}
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+ .cdk-overlay-container{
+   z-index : 1500 ;
+   position: fixed; 
+   margin-bottom:10px;
+}
+.modal {
+  width:2200px;
+  margin: 0px;
+}
+.modal-width-lg {
+  width:90%;
+  margin-left: 5%;
+}
+.modal-dialog::ng-deep{
+  width:2200px;
+  /* margin: 0px; */
+}
+.modal-width-lg .modal-content{
+  width: 1800px   ;
+  /* margin: 0px; */
+}

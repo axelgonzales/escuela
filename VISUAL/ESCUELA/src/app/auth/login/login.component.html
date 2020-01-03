@@ -1,147 +1,29 @@
-<div style="height: 100%;">
-  <nz-header style="background: #a9d18e;height:110px;">
-    <div nz-row  nzType="flex" >
-      <div nz-col nzSpan="12">
-        <div nz-col nzSpan="4" nzTitle="Page Title">
-          <img src="../../../assets/img/logo.png"
-           style="width: 80px;height: 100px;padding:10px">
-        </div>
-    
-        <div nz-col nzSpan="8" >
-          <h4  class="title-logo" >ESCUELA DE INTELIGENCIA DEL EJERCITO</h4>
-        </div>
+<div class="row no-gutters login-page">
+  <div class="col-xs-12 col-md-6 col-lg-8 text-white d-flex align-items-center align-content-stretch bg-purple-rp">
+    <div class="carousel">
+      <div class="items">
+        <img class="item" src="assets/images/images.jpg" alt=""/>
+        <img class="item" src="assets/images/funeral.jpg" alt=""/>
       </div>
-      <div nz-col nzSpan="12" style="padding-top:20px">
-        <form nz-form [formGroup]="loginForm" nzLayout="inline"  (ngSubmit)="submitForm()"  >
-          <nz-form-item>
-            <nz-form-control>
-              <nz-input-group nzPrefixIcon="user">
-                <input nz-input  class="user" type="text" formControlName="username" nz-input placeholder="Username"  required/>
-              </nz-input-group>
-              <nz-form-explain *ngIf="loginForm.get('username')?.dirty && loginForm.get('username')?.errors">
-                Campo obligatorio
-              </nz-form-explain>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <nz-form-control >
-              <nz-input-group nzPrefixIcon="lock">
-                <input nz-input  class="cont" type="password" formControlName="password" nz-input  placeholder="Password" required />
-              </nz-input-group>
-              <nz-form-explain *ngIf="loginForm.get('password')?.dirty && loginForm.get('password')?.errors">
-                Campo obligatorio
-              </nz-form-explain>
-              <nz-form-explain *ngIf="message">
-                usuario o contraseña no existe
-              </nz-form-explain>
-            </nz-form-control>
-          </nz-form-item>
-          <nz-form-item>
-            <nz-form-control>
-                <button  nz-button   [nzType]="'primary'" class="buttom-login" >Ingresar</button>
-            </nz-form-control>
-          </nz-form-item>
-        </form>
-        
-  </div>
     </div>
-  </nz-header>
-  <nz-content style="background: #385723;height: 70%;">
-      <div nz-row nzType="flex" nzJustify="center">
-        <div nz-col nzSpan="12">
-          <div *ngIf="!registroVisible">
-            <h1 class =" titulo" style="color:blanchedalmond">
-              BIENVENDOS A LA PLATAFORMA VIRTUAL DEL EJÉRCITO DEL PERÚ
-            </h1> 
-            <h2 style="color:blanchedalmond">
-              Para ingresar a la plataforma debe contar con un usuario y una contraseña, 
-              de lo contrario,registrese haciendo clic al botón REGISTRAR
-            </h2> 
-            <div style="margin-left: 20%;margin-right:20% ">
-                <button nz-button class="buttom-login" type="button" (click)="cambiarVisibleRegistro()">Registrar</button>
-            </div>
-          </div>
-
-          <nz-card style=" max-width: 650px;background: #a9d18e;margin-top: 30px;text-align: center;" *ngIf="registroVisible">
-            <h3 class ="titulo-register" style="color:blanchedalmond">
-              FORMULARIO DE REGISTRO
-            </h3> 
-            <form nz-form [formGroup]="validateForm" style=" max-width: 600px" (ngSubmit)="submitUserForm()">
-              <nz-form-item>
-                <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-mail</nz-form-label>
-                <nz-form-control [nzSm]="14" [nzXs]="24">
-                  <input nz-input formControlName="email" id="email" />
-                  <nz-form-explain *ngIf="validateForm.get('email')?.dirty && validateForm.get('email')?.errors">
-                    La entrada no es válida E-mail!
-                  </nz-form-explain>
-                </nz-form-control>
-              </nz-form-item>
-              <nz-form-item>
-                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password" nzRequired>Password</nz-form-label>
-                <nz-form-control [nzSm]="14" [nzXs]="24">
-                  <input
-                    nz-input
-                    type="password"
-                    id="password"
-                    formControlName="password"
-                    (ngModelChange)="updateConfirmValidator()"
-                  />
-                  <nz-form-explain *ngIf="validateForm.get('password')?.dirty && validateForm.get('password')?.errors"
-                    >Por favor ingrese su contraseña!</nz-form-explain
-                  >
-                </nz-form-control>
-              </nz-form-item>
-              <nz-form-item>
-                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="checkPassword" nzRequired>Confirm Password</nz-form-label>
-                <nz-form-control [nzSm]="14" [nzXs]="24">
-                  <input nz-input type="password" formControlName="checkPassword" id="checkPassword" />
-                  <nz-form-explain
-                    *ngIf="validateForm.get('checkPassword')?.dirty && validateForm.get('checkPassword')?.errors"
-                  >
-                    <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('required')">
-                      por favor confirme la contraseña
-                    </ng-container>
-                    <ng-container *ngIf="validateForm.get('checkPassword')?.hasError('confirm')">
-                        ¡Dos contraseñas que ingresas son inconsistentes!
-                    </ng-container>
-                  </nz-form-explain>
-                </nz-form-control>
-              </nz-form-item>
-              <nz-form-item>
-                <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="nickname" nzRequired>
-                  <span>
-                    Nickname
-                    <i
-                      nz-icon
-                      nz-tooltip
-                      nzTitle="Usuario con el que se ingresara al sistema"
-                      type="question-circle"
-                      theme="outline"
-                    ></i>
-                  </span>
-                </nz-form-label>
-                <nz-form-control [nzSm]="14" [nzXs]="24">
-                  <input nz-input id="nickname" formControlName="username" />
-                  <nz-form-explain *ngIf="validateForm.get('nickname')?.dirty && validateForm.get('nickname')?.errors"
-                    >Please input your nickname!</nz-form-explain
-                  >
-                </nz-form-control>
-              </nz-form-item>
-            
-              <nz-form-item nz-row style="margin-bottom:8px;">
-                <nz-form-control [nzSpan]="14" [nzOffset]="6">
-                  <button nz-button class="buttom-login">Registrar</button>
-                </nz-form-control>
-              </nz-form-item>
-            </form>
-          </nz-card>
-        </div>
-        <div nz-col nzSpan="6">
-          <img src="../../../assets/img/escudo.png" 
-          style="width: 450px;height: 400px;">
-        </div>
+    <div class="v1-left-menu my-2">
+      <div class="px-4 bd-left-4">
+        <h1>Bienvenido</h1>
+        <div>Intranet</div>
+        <div class="text-opc_6">ESCUELA DE INTELIGENCIA DEL EJERCITO</div>
       </div>
-      
-  </nz-content>
-  <nz-footer style="background: #385723;height: 10%;"></nz-footer>
+    </div>
+  </div>
+  <div class="col-xs-12 col-md-6 col-lg-4 bg-white d-flex align-items-center">
+
+    <div class="col-12 p-4 my-4 text-center">
+      <div class="col-12 p-4 my-4">
+        <img src="assets/img/logo.png" width="200" height="200">
+      </div>
+      <h5 class="mb-4 text-center">Inicia Sesión</h5>
+      <app-form-login></app-form-login>
+      <!-- <app-form-login></app-form-login> -->
+    </div>
+    <div class="absolute-bottom p-3 bg-opc font-14 text-muted text-center">@Copyright 2018 - Unac</div>
+  </div>
 </div>

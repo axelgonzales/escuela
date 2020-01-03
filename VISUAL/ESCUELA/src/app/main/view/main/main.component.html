@@ -1,116 +1,111 @@
 <nz-layout style="height: 100%;">
-    <nz-header style="background: #a9d18e;height: 110px;">
-      <div nz-row  nzType="flex" nzJustify="end" >
-        <div nz-col nzSpan="12">
-          <div nz-col nzSpan="4" nzTitle="Page Title">
-            <img src="../../../assets/img/logo.png"
-             style="width: 80px;height: 100px;padding:10px">
+
+    <nz-content style="background: #385723;height: 75%;">
+      <!-- <app-search-student></app-search-student> -->
+      <nz-card style="margin-left: 10%;width:80%;margin-top:4%" nzTitle="Buscador de alumnos" >
+        <div nz-row  nzType="flex" nzJustify="end" style="padding-bottom: 10px">
+          <div nz-col nzSpan="6">
+            <div class="form-spaccing" style="margin: 5px;">
+              <nz-input-group nzPrefixIcon="user">
+                  <input class="cont" type="text" [(ngModel)] = "dni" nz-input  placeholder="DNI" />
+                </nz-input-group>
+            </div>
           </div>
-      
-          <div nz-col nzSpan="8" >
-            <h4  class="title-logo" >ESCUELA DE INTELIGENCIA DEL EJERCITO</h4>
+          <div nz-col nzSpan="3">
+            <div class="form-spaccing" style="margin: 5px;">
+              <button nz-button nzType="primary" style="width: 100%;" (click)="searchDniStudent(dni)">
+                <i nz-icon nzType="search"></i>Buscar
+              </button>
+            </div>
+          </div>
+          <div nz-col nzSpan="3">
+            <div class="form-spaccing" style="margin: 5px;">
+              <button nz-button nzType="primary" style="width: 100%;" (click)="showModal()">
+                <i nz-icon nzType="plus"></i>Nuevo
+              </button>
+            </div>
           </div>
         </div>
-        <div nz-col nzSpan="8" ></div>
-        <div nz-col nzSpan="4" >
-            <div class="form-spaccing">
-                <nz-avatar
-                  nzSize="large"
-                  nzText="Melanie"
-                  style="vertical-align: middle;background: #f56a00"
-                ></nz-avatar>
-                <button nz-button [nzType]="'dashed'"  (click)="logout()"
-                style="margin-left: 16px; vertical-align: middle;">
-                  <span>Cerrar Sesión</span>
-                </button>
-            </div>
-        </div>         
-    </div>
-    </nz-header>
-    <nz-content style="background: #385723;height: 75%;">
-        <nz-card style="margin-left: 10%;width:80%;margin-top:4%">
-            <div nz-row  nzType="flex" nzJustify="end" style="padding-bottom: 10px">
-                <div nz-col nzSpan="6">
-                  <div class="form-spaccing">
-                    <nz-input-group nzPrefixIcon="user">
-                        <input class="cont" type="text" [(ngModel)] = "dni" nz-input  placeholder="DNI" />
-                      </nz-input-group>
-                  </div>
-                </div>
-                <div nz-col nzSpan="3">
-                  <div class="form-spaccing">
-                    <button nz-button nzType="primary" style="width: 100%;" (click)="searchDniStudent(dni)">
-                      <i nz-icon nzType="search"></i>Buscar
-                    </button>
-                  </div>
-                </div>
-                <div nz-col nzSpan="3">
-                  <div class="form-spaccing">
-                    <button nz-button nzType="primary" style="width: 100%;" (click)="showModal()">
-                      <i nz-icon nzType="plus"></i>Nuevo
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div nz-row  nzType="flex" >
-                  <div nz-col nzSpan="24">
-                    <nz-table #basicTable [nzData]="listOfData">
-                      <thead>
-                        <tr>
-                          <th>Nombre Completo</th>
-                          <th>celular</th>
-                          <th>dni</th>
-                          <th>Opciones</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let data of basicTable.data">
-                          <td>{{ data.firstLastname }} {{ data.secondLastname }}  {{ data.name }}  </td>
-                          <td>{{ data.celular }}</td>
-                          <td>{{ data.dni }}</td>
-                          <td>
-                            <button nz-button  nzShape="circle"  (click)="getStudentId(data)"
-                            style="background: green;margin-right: 5px">
-                              <i nz-icon nzType="eye" nzTheme="outline" style="color:antiquewhite"></i>
-                            </button>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </nz-table> 
-                  </div>
-              </div>
+      </nz-card>
 
-          </nz-card>
-          <ng-template #extraTemplate>
-            <a>More</a>
-          </ng-template>
+          <div nz-row  nzType="flex"  style="background: #fff;margin-left: 10%;width:80%;margin-top:4%">
+              <div nz-col nzSpan="24">
+                <nz-table #borderedTable nzBordered   [nzData]="listOfData">
+                  <thead>
+                    <tr>
+                      <th>Nombre Completo</th>
+                      <th>celular</th>
+                      <th>dni</th>
+                      <th>Opciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of borderedTable.data">
+                      <td>{{ data.firstLastname }} {{ data.secondLastname }}  {{ data.name }}  </td>
+                      <td>{{ data.celular }}</td>
+                      <td>{{ data.dni }}</td>
+                      <td>
+                        <button style="margin: 5px;"
+                          nz-button  nzShape="circle"  (click)="getStudentId(data)"
+                        style="background: green;margin-right: 5px">
+                          <i nz-icon nzType="eye" nzTheme="outline" style="color:antiquewhite"></i>
+                        </button>
+                        <button  style="margin: 5px;"
+                          nz-button  nzShape="circle"  (click)="generateRerport(data)"
+                        style="background: blueviolet;margin-right: 5px">
+                          <i nz-icon nzType="snippets" nzTheme="outline" style="color:antiquewhite"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </nz-table> 
+              </div>
+          </div>
     </nz-content>
     <nz-footer style="background: #385723;"></nz-footer>
   </nz-layout>
 
 
   <nz-modal
-  nzWidth="100%"
-    nzWrapClassName="vertical-center-modal"
-    nzContentClassName="content-modal"
-    [(nzVisible)]="isVisible"
-    [nzTitle]="modalTitle"
-    [nzContent]="modalContent"
-    [nzFooter]="modalFooter"
-    (nzOnCancel)="handleCancel()"
-  >
-    <ng-template #modalTitle>
-      Agregar nuevo estudiante
+nzWidth="100%"
+  nzContentClassName="content-modal"
+  [(nzVisible)]="isVisibleReporte"
+  [nzTitle]="modalTitle2"
+  [nzContent]="modalContent2"
+  (nzOnCancel)="handleCancelReporte()"
+>
+  <ng-template #modalTitle2>
+    Reporte estudiante
+  </ng-template>
+  <ng-template #modalContent2 style="width: 90%;">
+    <pdf-viewer [src]="link"
+              [original-size]="false"
+  ></pdf-viewer>
+  </ng-template>
+</nz-modal>
+
+<nz-modal
+nzWidth="100%"
+  nzWrapClassName="vertical-center-modal"
+  nzContentClassName="content-modal"
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  [nzFooter]="modalFooter"
+  (nzOnCancel)="handleCancel()"
+>
+  <ng-template #modalTitle>
+    Agregar nuevo estudiante
+  </ng-template>
+
+  <ng-template #modalContent style="width: 90%;">
+    <app-create-student [student]="student" (usuarioSeleccionado)="setSeleccionado($event)"> </app-create-student>
+  </ng-template>
+
+  <ng-template #modalFooter>
+      <button nz-button nzType="default" (click)="handleCancel()">Cancelar</button>
+      <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading" disabled>Registrar
+      </button>
     </ng-template>
 
-    <ng-template #modalContent style="width: 90%;">
-      <app-create-student [student]="student" (usuarioSeleccionado)="setSeleccionado($event)"> </app-create-student>
-    </ng-template>
-
-    <ng-template #modalFooter>
-        <button nz-button nzType="default" (click)="handleCancel()">Cancelar</button>
-        <button nz-button nzType="primary" (click)="handleOk()" [nzLoading]="isConfirmLoading" disabled>Registrar
-        </button>
-      </ng-template>
-
-  </nz-modal>
+</nz-modal>

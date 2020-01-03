@@ -28,6 +28,20 @@ export class ApiService {
     });
     return this.http.get<any>(environment.api.url_student_find_all +'/'+id, {headers: _headers});
   }
+  getGerenateReportStudent(id){
+    const _headers = new HttpHeaders({
+  
+    });
+    
+const httpOptions = {
+  'responseType'  : 'arraybuffer' as 'json'
+   //'responseType'  : 'blob' as 'json'        //This also worked
+};
+
+return this.http.get<any>(environment.api.url_student_report.replace("{id}",id), httpOptions);
+    // return this.http.get<any>(environment.api.url_student_report.replace("{id}",id), {headers: _headers});
+  }
+
   getAllStudent(){
     const _headers = new HttpHeaders({
   

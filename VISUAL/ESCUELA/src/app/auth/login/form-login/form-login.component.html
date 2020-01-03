@@ -1,0 +1,29 @@
+
+<form  [formGroup]="formlogin" (ngSubmit)="onSubmit()">
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Correo</mat-label>
+      <input matInput placeholder="Ingresar tu correo" formControlName="username" >
+      <mat-icon matSuffix>person_outline</mat-icon>
+      <mat-error *ngIf="username.invalid">Se debe ingresar un email valido</mat-error>
+      <mat-error *ngIf="username.required && (username.dirty || username.touched)">Correo electrónico requerido </mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input matInput placeholder="Ingresar tu correo" formControlName="password" type="password" >
+      <mat-icon matSuffix>lock_outline</mat-icon>
+      <mat-error *ngIf="(password.dirty || password.touched) && password.required ">
+        La contraseña es requerida
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <button mat-raised-button color="primary" class="mat-form-field" type="submit" >
+    Ingresar
+  </button>
+  
+  <button mat-button>Click me!</button>
+
+</form>

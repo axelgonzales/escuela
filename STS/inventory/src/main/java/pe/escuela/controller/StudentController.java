@@ -1,7 +1,14 @@
 package pe.escuela.controller;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,11 +16,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperPrint;
 import pe.escuela.domain.Student;
 import pe.escuela.service.StudentService;
 
@@ -39,6 +48,41 @@ public class StudentController {
 		}
 		
 		return new ResponseEntity<>(student,HttpStatus.CREATED);
+		
+	}
+	
+	@GetMapping("{id}/report")
+	public ResponseEntity<?> generateReport(
+			@PathVariable int id, HttpServletResponse response
+			) {
+		
+		response.setContentType("application/x-download");
+		  response.setHeader("Content-Disposition", String.format("attachment; filename=\"users.pdf\""));
+		JasperPrint jasperPrint = null;
+		
+		try {
+			jasperPrint =  studentService.generateReport(id);
+		} catch (FileNotFoundException e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+		}
+		if (id<1) {
+			return new ResponseEntity<>("Ocurrio un error al hacer insert en la bd",HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		
+		
+			try {
+				 OutputStream out = response.getOutputStream();
+				JasperExportManager.exportReportToPdfStream(jasperPrint, out);
+			} catch (JRException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return null;
+			
+			 
 		
 	}
 	

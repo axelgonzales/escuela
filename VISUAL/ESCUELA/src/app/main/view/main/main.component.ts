@@ -8,11 +8,13 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  isVisible = false;
   isConfirmLoading = false;
+  isVisible = false;
   listOfData = [];
+  link :string = '';
   student : any;
   dni:any;
+  isVisibleReporte = false;
   constructor(private router: Router,private apiService: ApiService) {
   }
 
@@ -26,15 +28,35 @@ export class MainComponent implements OnInit {
       this.listOfData = this.listOfData.filter(obj =>obj.dni == dni );
     }
   }
-  getStudentId(data:any){
-    this.apiService.getFindIdStudent(data.id).subscribe((response) => {
+  
+  
+  generateRerport(data:any){
+    this.apiService.getGerenateReportStudent(data.studentId).subscribe((response) => {
       // this.registroVisible = false;
-      this.student = response;
+      // this.student = response;
+        // this.isVisibleReporte = true;
+        
+        // this.link = 'C:/Users/Axel/Downloads/escuela/employee.pdf'
+        // console.log("link " + this.link);
         console.log(response);
-        this.isVisible = true;
+        let file = new Blob([response], { type: 'application/pdf' });            
+        var fileURL = URL.createObjectURL(file);
+        window.open(fileURL);
     });
   }
-  
+  handleCancelReporte(){
+    this.isVisibleReporte = false;
+  }
+
+  getStudentId(data){
+    this.apiService.getFindIdStudent(data.studentId).subscribe((response) => {
+      // this.registroVisible = false;
+      this.student = response;
+      this.isVisible = true;
+        
+    });
+  }
+
   getListStudent(){
     this.apiService.getAllStudent().subscribe((response) => {
       // this.registroVisible = false;
@@ -56,9 +78,7 @@ export class MainComponent implements OnInit {
   }
   
 
-  showModal(): void {
-    this.isVisible = true;
-  }
+
 
   handleOk(): void {
     this.isConfirmLoading = true;
@@ -76,4 +96,11 @@ export class MainComponent implements OnInit {
     this.isVisible = false;
     this.getListStudent();
   }
+
+
+  showModal(): void {
+    this.isVisible = true;
+  }
+
+
 }
