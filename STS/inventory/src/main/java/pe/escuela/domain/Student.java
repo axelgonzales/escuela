@@ -2,13 +2,23 @@ package pe.escuela.domain;
 
 import java.util.List;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import lombok.Data;
 
 
 public class Student {
 	 private String studentId;
+	 @NotNull 
+	 @NotEmpty
 	 private String firstLastname;
+	 @NotNull
+	 @NotEmpty
 	 private String secondLastname;
+	 @NotNull
+	 @NotEmpty
 	 private String name;
 	 private String alias;
 	 private String stateCivil;
@@ -17,6 +27,7 @@ public class Student {
 	 private String province;
 	 private String distrity;
 	 private String dateBirth;
+	 @Email
 	 private String correo;
 	 private String paginaWeb;
 	 private String facebook;
@@ -36,6 +47,8 @@ public class Student {
 	 private String senalesParticualres;
 	 private String inscripcion;
 	 private String libretaMilitar;
+	 @NotNull
+	 @NotEmpty
 	 private String dni;
 	 private String cip;
 	 private String brevete;

@@ -11,6 +11,9 @@ import {ResponseAccesos} from '../models/responseAccesos';
   providedIn: 'root'
 })
 export class ApiService {
+  getStudentId(studentId: any) {
+    throw new Error("Method not implemented.");
+  }
   data_user: any;
 
   static getDataUser() {
@@ -27,6 +30,12 @@ export class ApiService {
   
     });
     return this.http.get<any>(environment.api.url_student_find_all +'/'+id, {headers: _headers});
+  }
+  deleteIdStudent(id){
+    const _headers = new HttpHeaders({
+  
+    });
+    return this.http.delete<any>(environment.api.url_student_delete +'/'+id, {headers: _headers});
   }
   getGerenateReportStudent(id){
     const _headers = new HttpHeaders({

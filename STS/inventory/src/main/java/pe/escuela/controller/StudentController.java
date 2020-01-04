@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +29,6 @@ import pe.escuela.service.StudentService;
 
 @RestController
 @RequestMapping("student")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class StudentController {
 	
 	private  final StudentService studentService;
@@ -39,12 +39,13 @@ public class StudentController {
 
 	@PostMapping
 	public ResponseEntity<?> insert(
-			@RequestBody Student student
+			
+			@ Validated	@RequestBody Student student
 			) {
 		
 		Integer id = studentService.insert(student);
 		if (id<1) {
-			return new ResponseEntity<>("Ocurrio un error al hacer insert en la bd",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Ocurrio un error al hacer insert en la bd",HttpStatus.BAD_REQUEST);
 		}
 		
 		return new ResponseEntity<>(student,HttpStatus.CREATED);
@@ -110,7 +111,7 @@ public class StudentController {
 //		
 //	}
 	
-	@DeleteMapping("/{studentId}")
+	@DeleteMapping("{studentId}")
 	public ResponseEntity<?>delete(
 	       @PathVariable int studentId
 	       ){

@@ -56,6 +56,15 @@ export class MainComponent implements OnInit {
         
     });
   }
+  deleteStudentId(data){
+    this.apiService.deleteIdStudent(data.studentId).subscribe((response) => {
+      // this.registroVisible = false;
+      this.student = response;
+      this.isVisible = true;
+        
+    });
+  
+  }
 
   getListStudent(){
     this.apiService.getAllStudent().subscribe((response) => {
