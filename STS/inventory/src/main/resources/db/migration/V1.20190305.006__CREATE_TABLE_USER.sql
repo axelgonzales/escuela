@@ -6,4 +6,4 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ;
 
- 
+ INSERT INTO `user` VALUES (1,NULL,'inteligencia','inteligencia');
